@@ -37,6 +37,8 @@ echo "Resetting build tree"
 repo forall -vc "git reset --hard" > /tmp/android-reset.log 2>&1
 echo "Syncing"
 repo sync -j32 -d --force-sync > /tmp/android-sync.log 2>&1
+# Temporary hack for msm8916
+repopick 256308
 . build/envsetup.sh
 
 echo "--- mka clobber"
