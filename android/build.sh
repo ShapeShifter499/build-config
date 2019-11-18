@@ -6,7 +6,7 @@ export PYTHONDONTWRITEBYTECODE=true
 export BUILD_NO=
 unset BUILD_NUMBER
 #TODO(zif): convert this to a runtime check, grep "sse4_2.*popcnt" /proc/cpuinfo
-export CPU_SSE42=false
+# export CPU_SSE42=false e5 2699 v3 have this
 # Following env is set from build
 # VERSION
 # DEVICE
@@ -32,6 +32,7 @@ if [ -f /lineage/setup.sh ]; then
     source /lineage/setup.sh
 fi
 yes | repo init -u https://github.com/lineageos/android.git -b ${VERSION}
+curl https://raw.githubusercontent.com/WKPC/local_manifests/master/${DEVICE}-${VERSION}.xml > .repo/local_manifests/roomservice.xml
 echo "Resetting build tree"
 repo forall -vc "git reset --hard" > /tmp/android-reset.log 2>&1
 echo "Syncing"
