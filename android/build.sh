@@ -54,5 +54,7 @@ if [ "$RELEASE_TYPE" '==' "experimental" ]; then
 fi
 echo "--- Building"
 mka otatools-package target-files-package dist > /tmp/android-build.log
+mka bacon
 
-echo "--- Uploading not implemented"
+echo "--- Uploading"
+cp out/target/product/${DEVICE}/lineage*UN*.zip /var/www/html
